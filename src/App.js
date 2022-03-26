@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
+import LoginForm from './components/LoginForm';
+import { useContext } from 'react';
+import { AuthContext } from './contexts/AuthContext';
+import LoginStatus from './components/LoginStatus';
 
 function App() {
+  const {auth}=useContext(AuthContext)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <h3>Context Api</h3>
+    { auth==false? <LoginForm/>:<LoginStatus/>}
+
     </div>
   );
 }
